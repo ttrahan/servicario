@@ -1,116 +1,108 @@
-import React, { useEffect, useState } from "react";
-import Counter from 'pages/components/Counter'
-import 'pages/Home.css';
+/* eslint jsx-a11y/anchor-is-valid: 0 */
 
-
-// This is a functional component
-// 1. Smaller components
-// 2. Usually presentational component
-// 3. In most cases, should be reusable components
-// 4. Focus on one thing or responsiblity
-
-// const Home = () => {
-
-//     // useState returns an array: first element is state value, second element is
-//     // a function that mutates your state
-//     const [message, setMessage] = useState('Super Message!!!!!!!!')
-//     const [count, setCount] = useState(0)
-//     // const [test, setTest] = useState(0)
-
-//     // // this is the same result as above
-//     // const messageState = useState('Super Message')
-//     // const message = messageState[0]
-//     // const setMessage = messageState[1]
-
-//     // this is called after component is initialized AND when component is updated
-//     useEffect(() => {
-//         setTimeout(() => {
-//             setMessage('I am updated message!!!!')
-//         }, 1000)
-//     }, []) // empty array will ensure it's only called one time b/c second argument in useEffect 
-//            // is the array, so it can't be updated
-
-//     const increment = () => {
-//         setCount(count + 1)
-//     }
-
-//     const decrement = () => {
-//         setCount(count - 1)
-//     }
-
-
-//     return (
-//         <div className="container">
-//             <h1> I am Home Page</h1>
-//             <p>{message}</p>
-//             <button onClick={increment}>Increment</button>
-//             <div className="counter">{count}</div>
-//             <button onClick={decrement}>Decrement</button>
-//         </div>
-//     );
-// }
-
-
-// This is a class component
-// 1. Larger components
-// 2. Container components, i.e. contain other components
-// 3. Easier to handle lots of state
-// 4. More boilerplate
-// 5. Access to lifecycle functions
+import React from 'react'
+import Navbar from '../components/Navbar'
+import NavbarClone from '../components/NavbarClone'
 
 class Home extends React.Component {
 
-    state = {
-        message: 'I am just a message',
-        testNumber: 99
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        console.log(prevProps)
-        console.log(prevState)
-    }
-
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         message: 'Super Message!',
-    //     }
-    // }
-
-    // lifecycle function
-    // componentDidMount function is only called once
-    componentDidMount() {
-        alert('I am mounted!!!')
-    }
-
-    displayMessage = (type, count) => {
-            if (type === 'increment') {
-                // alert(`Your number was incremented! New value: ${count}`)
-                return
-            }
-
-            // alert(`Your number was decremented! New value: ${count}`)
-            
-    }
-
-
-
-    // lifecycle function
-    // render function is called every time your state is changed
-    render() { 
-        const {message, testNumber} = this.state
-        return (
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <NavbarClone />
+        <section className="hero is-default is-bold">
+          <div className="hero-body">
             <div className="container">
-                <h1> I am Home Page</h1>
-                <p>{message}</p>
-                <button onClick={() => this.setState({testNumber: testNumber + 1})}>Testing Increment</button>
-                <Counter
-                    testNumber={testNumber} 
-                    onChange={this.displayMessage}
-                    title={'I am counter Component!'}/>
-            </div>        
-        )
-    }
+              <div className="columns is-vcentered">
+                <div className="column is-5 is-offset-1 landing-caption">
+                  <h1 className="title is-1 is-bold is-spaced">
+                      Learn, Collaborate.
+                  </h1>
+                  <h2 className="subtitle is-5 is-muted">Lorem ipsum sit dolor amet is a dummy text used by typography industry </h2>
+                  <p>
+                    <a className="button cta rounded primary-btn raised">
+                        Get Started
+                    </a>
+                  </p>
+                </div>
+                <div className="column is-5 is-offset-1">
+                  <figure className="image is-4by3">
+                      <img src={process.env.PUBLIC_URL + '/worker.svg'} alt="Description" />
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+
+        <section className="section section-feature-grey is-medium">
+          <div className="container">
+            <div className="title-wrapper has-text-centered">
+              <h2 className="title is-2">Great Power Comes </h2>
+              <h3 className="subtitle is-5 is-muted">With great Responsability</h3>
+              <div className="divider is-centered"></div>
+            </div>
+
+            <div className="content-wrapper">
+              <div className="columns">
+                <div className="column is-one-third">
+                  <div className="feature-card is-bordered has-text-centered revealOnScroll delay-1" data-animation="fadeInLeft">
+                    <div className="card-title">
+                       <h4>App builder</h4>
+                    </div>
+                    <div className="card-icon">
+                       <img src="https://images.unsplash.com/photo-1574333751899-72c1e3d963fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" alt=""/>
+                    </div>
+                    <div className="card-text">
+                       <p>This is some explanatory text that is on two rows</p>
+                    </div>
+                    <div className="card-action">
+                       <a href="#" className="button btn-align-md accent-btn raised">Free Trial</a>
+                    </div>
+                  </div>
+                </div>
+                <div className="column">
+                  <div className="feature-card is-bordered has-text-centered revealOnScroll delay-2" data-animation="fadeInLeft">
+                    <div className="card-title">
+                      <h4>Cloud integration</h4>
+                    </div>
+                    <div className="card-icon">
+                      <img src="https://images.unsplash.com/photo-1574333751899-72c1e3d963fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" alt=""/>
+                    </div>
+                    <div className="card-text">
+                      <p>This is some explanatory text that is on two rows</p>
+                    </div>
+                    <div className="card-action">
+                      <a href="#" className="button btn-align-md secondary-btn raised">Get Started</a>
+                    </div>
+                  </div>
+                </div>
+                <div className="column">
+                  <div className="feature-card is-bordered has-text-centered revealOnScroll delay-3" data-animation="fadeInLeft">
+                    <div className="card-title">
+                      <h4>Addons & Plugins</h4>
+                    </div>
+                    <div className="card-icon">
+                      <img src="https://images.unsplash.com/photo-1574333751899-72c1e3d963fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" alt=""/>
+                    </div>
+                    <div className="card-text">
+                      <p>This is some explanatory text that is on two rows</p>
+                    </div>
+                    <div className="card-action">
+                      <a href="#" className="button btn-align-md primary-btn raised">Get Started</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    )
+  }
 }
 
-export default Home;
+export default Home
